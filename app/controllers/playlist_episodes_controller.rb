@@ -17,6 +17,19 @@ class PlaylistEpisodesController < ApplicationController
         render json: playlist_episode
     end
 
+    def show
+        playlist_episode = PlaylistEpisode.find_by(id: params[:id])
+
+        render json: playlist_episode
+    end
+
+    def destroy
+        
+        playlist_episode = PlaylistEpisode.find_by(episode_id: params[:episode_id], playlist_id: params[:playlist_id])
+        playlist_episode.delete
+        
+        render json: playlist_episode
+    end
 
     private
 
